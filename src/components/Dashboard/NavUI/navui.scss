@@ -1,0 +1,19 @@
+.navigation {
+  margin-top: 20px;
+  .navLink {
+    padding: 10px;
+    font-size: 1.25em;
+    border: 2px solid #4c4c4c;
+    border-radius: 3px;
+    margin: 10px;
+    color: #4c4c4c;
+    .navLink:visited {
+      color: #4c4c4c;
+    }
+  }
+}
+
+.navLink:hover {
+  background-color: #4c4c4c;
+  color: #eeeeee;
+}

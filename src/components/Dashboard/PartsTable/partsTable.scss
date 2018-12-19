@@ -1,0 +1,16 @@
+body {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.table-alignment {
+  margin-left: -50px;
+}
+
+.ReactTable .rt-thead {
+  overflow-y: scroll;
+}
+
+.rt-th:focus {
+  outline: none;
+}
