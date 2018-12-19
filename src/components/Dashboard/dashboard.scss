@@ -1,0 +1,25 @@
+.toolbar {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  nav {
+    grid-column: 2;
+    grid-row: 1;
+    padding-right: 100px;
+    margin-top: 50px;
+  }
+  img {
+    grid-column: 1;
+    grid-row: 1;
+    margin-top: 29px;
+    margin-left: 50px;
+  }
+}
+.centered {
+  .ReactTable {
+    font-family: arial;
+    font-size: 15px;
+    margin-left: -350px;
+    color: #4c4c4c;
+    text-align: center;
+  }
+}
