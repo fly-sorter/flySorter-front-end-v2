@@ -119,14 +119,16 @@ class CreatePart extends React.Component {
   };
 
   idChange = event => {
-    const { name, value } = event.target;
+    const value = event.target.value;
+    console.log(value);
 
     this.setState(
       {
-        [name]: value
+        part_id: value
       },
       () => {
         let src = document.getElementById('src');
+        console.log(this.state.part_id);
         // src.value = this.props.main.parts.filter(
         //   element => element.part_id === parseInt(this.state.part_id)
         // )[0].part_src;
