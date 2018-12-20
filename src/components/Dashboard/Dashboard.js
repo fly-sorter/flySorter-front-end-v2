@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import logo from '../../assets/logo.png';
-import NavUI from './NavUI/NavUI.js';
+import NavUI from '../NavUI/NavUI.js';
 import './dashboard.scss';
 import * as actions from './dashboardAction.js';
 import PartsTable from './PartsTable/PartsTable.js';
@@ -20,7 +20,9 @@ class Dashboard extends React.Component {
   };
 
   loadTable = () => {
-    this.props.getParts();
+    if (this.props.main.parts == false) {
+      this.props.getParts();
+    }
   };
 
   render() {

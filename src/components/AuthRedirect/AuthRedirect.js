@@ -4,7 +4,7 @@ import cookies from 'react-cookies';
 
 class AuthRedirect extends React.Component {
   render() {
-    // cookies.save('auth', 'I am a cookie');
+    //cookies.save('auth', 'I am a cookie');
     const token = cookies.load('auth');
 
     return (

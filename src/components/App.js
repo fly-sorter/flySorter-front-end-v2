@@ -7,6 +7,8 @@ import Signin from './Signin/Signin.js';
 import Signup from './Signup/Signup.js';
 import Dashboard from './Dashboard/Dashboard.js';
 import CreatePart from './CreatePart/CreatePart.js';
+import SubTable from './SubTable/SubTable.js';
+import EditPart from './EditPart/EditPart.js';
 
 class App extends Component {
   render() {
@@ -18,7 +20,9 @@ class App extends Component {
             <Route path="/signin" component={Signin} />
             <Route path="/signup" component={Signup} />
             <Route path="/dashboard" component={Dashboard} />
-            <Route path="/create-part" component={CreatePart} />
+            <Route path="/createpart" component={CreatePart} />
+            <Route path="/subtable" component={SubTable} />
+            <Route path="/editpart" component={EditPart} />
           </div>
         </BrowserRouter>
       </div>

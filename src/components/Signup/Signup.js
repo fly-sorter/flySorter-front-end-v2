@@ -113,8 +113,9 @@ class Signup extends React.Component {
     if (this.state.redirectToReferrer) return <Redirect to="/authRedirect" />;
     return (
       <div>
+        <img src={logo} alt="the logo of fly sorter" />
+
         <div className="centered">
-          <img src={logo} alt="the logo of fly sorter" />
           <div className="signin">
             <form>
               <li>
@@ -174,7 +175,7 @@ class Signup extends React.Component {
                   alt="check to verify the state of successful signup"
                   className="check3"
                 />
-              </li>{' '}
+              </li>
               <p>{this.state.passwordError}</p>
               <button type="submit" onClick={this.handleSubmit}>
                 Signup
