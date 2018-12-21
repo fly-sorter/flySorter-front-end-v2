@@ -2,41 +2,7 @@
 
 const initialState = {
   parts: [],
-  subAssembly: {
-    //Mock Motor
-    sub_id: 1787873,
-    sub_part: [
-      {
-        part_category: 'Casting',
-        part_count: 580,
-        part_desc: 'Base',
-        part_id: 100001,
-        part_location: 'Warehouse',
-        part_longlead: 'Y',
-        part_mfgnum: 'BC-BASE-0400',
-        part_notes: null,
-        part_price: '$14.75',
-        part_src: 'Seattle Foundry',
-        part_sub: 'N'
-      },
-      {
-        part_category: 'UI',
-        part_count: 884,
-        part_desc: 'Label',
-        part_id: 100008,
-        part_location: 'Assembly Bench',
-        part_longlead: 'Y',
-        part_mfgnum: 'BLENDERCO Product Label',
-        part_notes: null,
-        part_price: '$0.87',
-        part_src: 'UPrint.com',
-        part_sub: 'Y'
-      }
-    ],
-    sub_version: 'ver-5.0',
-    sub_qty: 15,
-    sub_minutes: 450
-  },
+  subAssembly: [],
   users: [],
   subhistory: [],
   signup: {}
@@ -52,6 +18,9 @@ export default (state = initialState, action) => {
     case 'POSTPARTS':
       return { ...state, ...{ parts: [...state.parts, payload] } };
 
+    case 'POSTSUB':
+      return { ...state, ...{ subAssembly: [...state.subAssembly, payload] } };
+
     case 'GETSUBASSEMBLY':
       return { ...state, ...{ subAssembly: payload } };
 
@@ -61,6 +30,18 @@ export default (state = initialState, action) => {
       );
       return { ...state, ...{ parts: retainedData } };
 
+    case 'PUTPART':
+      console.log(payload, 'at put');
+      console.log(state.parts);
+      let replaceData = state.parts.map(element => {
+        if (element.part_id === payload.part_id) {
+          return payload;
+        }
+        return element;
+      });
+      console.log(replaceData);
+      return { ...state, ...{ parts: replaceData } };
+
     case 'GETUSERLIST':
       return { ...state, ...{ users: payload } };
 
@@ -68,6 +49,12 @@ export default (state = initialState, action) => {
       console.log(payload);
       return { ...state, ...{ signup: payload } };
     }
+
+    case 'DELETESUB':
+      let retainedDataSub = state.subAssembly.filter(
+        element => element.sub_id !== payload
+      );
+      return { ...state, ...{ subAssembly: retainedDataSub } };
 
     default:
       return state;

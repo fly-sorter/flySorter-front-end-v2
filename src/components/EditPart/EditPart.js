@@ -33,7 +33,9 @@ class CreatePart extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+
     const data = this.props.main.parts;
+    console.log(this.state);
 
     const check2 = document.getElementById('check2');
     const check3 = document.getElementById('check3');
@@ -85,19 +87,18 @@ class CreatePart extends React.Component {
     if (this.state.part_category <= 0) {
       this.setState({ categoryMessage: 'Please select a category' });
     }
-    if (this.state.part_count <= 0) {
+    if (this.state.part_count < 0) {
       this.setState({ countMessage: 'Empty field please enter information' });
       check6.src = grayCheckMark;
     }
     if (
       this.state.part_id.length > 0 &&
-      !uniqueId.has(parseInt(this.state.part_id)) &&
       this.state.part_desc.length > 0 &&
       this.state.part_sub.length > 0 &&
       this.state.part_src.length > 0 &&
       this.state.part_price.length > 0 &&
       this.state.part_category.length > 0 &&
-      this.state.part_count.length > 0 &&
+      this.state.part_count >= 0 &&
       this.state.part_longlead.length > 0
     ) {
       let postData = {
@@ -106,34 +107,74 @@ class CreatePart extends React.Component {
         part_sub: this.state.part_sub,
         part_src: this.state.part_src,
         part_mfgnum: this.state.part_mfgnum,
-        part_price: parseInt(this.state.part_price),
+        part_price: parseFloat(this.state.part_price.replace('$', '')),
         part_category: this.state.part_category,
         part_location: this.state.part_location,
         part_count: parseInt(this.state.part_count),
         part_longlead: this.state.part_longlead,
         part_notes: this.state.part_notes
       };
-      this.props.partSubmit(undefined, postData);
+      console.log(postData);
+
+      this.props.editPart(undefined, postData);
       this.setState({ redirectToReferrer: true });
     }
   };
 
   idChange = event => {
     const value = event.target.value;
-    console.log(value);
-
     this.setState(
       {
         part_id: value
       },
       () => {
         let src = document.getElementById('src');
-        console.log(this.state.part_id);
-        // src.value = this.props.main.parts.filter(
-        //   element => element.part_id === parseInt(this.state.part_id)
-        // )[0].part_src;
-        console.log(parseInt(this.state.part_id));
-        console.log(this.props.main.parts);
+        let desc = document.getElementById('desc');
+        let mfgnum = document.getElementById('mfgnum');
+        let price = document.getElementById('price');
+        let count = document.getElementById('count');
+        let notes = document.getElementById('notes');
+
+        src.value = this.props.main.parts.filter(
+          element => element.part_id === parseInt(this.state.part_id)
+        )[0].part_src;
+        desc.value = this.props.main.parts.filter(
+          element => element.part_id === parseInt(this.state.part_id)
+        )[0].part_desc;
+        mfgnum.value = this.props.main.parts.filter(
+          element => element.part_id === parseInt(this.state.part_id)
+        )[0].part_mfgnum;
+        price.value = this.props.main.parts.filter(
+          element => element.part_id === parseInt(this.state.part_id)
+        )[0].part_price;
+        count.value = this.props.main.parts.filter(
+          element => element.part_id === parseInt(this.state.part_id)
+        )[0].part_count;
+        notes.value = this.props.main.parts.filter(
+          element => element.part_id === parseInt(this.state.part_id)
+        )[0].part_notes;
+        this.setState({
+          part_desc: this.props.main.parts.filter(
+            element => element.part_id === parseInt(this.state.part_id)
+          )[0].part_desc,
+          part_sub: 'N',
+          part_src: this.props.main.parts.filter(
+            element => element.part_id === parseInt(this.state.part_id)
+          )[0].part_src,
+          part_mfgnum: this.props.main.parts.filter(
+            element => element.part_id === parseInt(this.state.part_id)
+          )[0].part_mfgnum,
+          part_price: this.props.main.parts.filter(
+            element => element.part_id === parseInt(this.state.part_id)
+          )[0].part_price,
+          part_count: this.props.main.parts.filter(
+            element => element.part_id === parseInt(this.state.part_id)
+          )[0].part_count,
+          part_notes: this.props.main.parts.filter(
+            element => element.part_id === parseInt(this.state.part_id)
+          )[0].part_notes,
+          part_longlead: 'N'
+        });
       }
     );
   };
@@ -187,7 +228,7 @@ class CreatePart extends React.Component {
                   <option value="">Select Part ID</option>
 
                   {idListCreator().map((element, idx) => (
-                    <option value={element} key={idx}>
+                    <option value={element.part_id} key={idx}>
                       {element.part_id} {element.part_desc}
                     </option>
                   ))}
@@ -201,7 +242,7 @@ class CreatePart extends React.Component {
                     <input
                       type="text"
                       name="part_desc"
-                      id="message"
+                      id="desc"
                       onChange={this.handleChange}
                     />
                     <img

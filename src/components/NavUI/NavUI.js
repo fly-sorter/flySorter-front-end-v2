@@ -9,8 +9,8 @@ class NavUi extends React.Component {
         <Link to="/dashboard" className="navLink">
           Dashboard
         </Link>
-        <Link to="/createpart" className="navLink">
-          Create a Part
+        <Link to="/create" className="navLink">
+          Create
         </Link>
         <Link to="/editpart" className="navLink">
           Edit a Part
