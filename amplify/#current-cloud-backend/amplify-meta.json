@@ -1,0 +1,53 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "flyorterfrontendv2-20181221114712-authRole",
+			"UnauthRoleArn": "arn:aws:iam::359646546957:role/flyorterfrontendv2-20181221114712-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::359646546957:role/flyorterfrontendv2-20181221114712-authRole",
+			"Region": "us-west-2",
+			"DeploymentBucketName": "flyorterfrontendv2-20181221114712-deployment",
+			"UnauthRoleName": "flyorterfrontendv2-20181221114712-unauthRole",
+			"StackName": "flyorterfrontendv2-20181221114712",
+			"StackId": "arn:aws:cloudformation:us-west-2:359646546957:stack/flyorterfrontendv2-20181221114712/3655c650-0559-11e9-a367-0685e3189192"
+		}
+	},
+	"auth": {
+		"cognito8feb8d09": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/flyorterfrontendv2-20181221114712-deployment/amplify-cfn-templates/auth/cognito8feb8d09-cloudformation-template.yml",
+				"logicalId": "authcognito8feb8d09"
+			},
+			"lastPushTimeStamp": "2018-12-21T19:58:52.463Z",
+			"output": {
+				"AppClientSecret": "50g70gquagi26f8mn6tfn2ksvncf6c6la6as1epsml24e48hldh",
+				"UserPoolId": "us-west-2_Hx4gI38FX",
+				"AppClientIDWeb": "7vi108k08tufu2o0ck4uvravg9",
+				"AppClientID": "20ivsjd6sup97rlbb0o8a7bha3",
+				"IdentityPoolId": "us-west-2:4175f777-847f-4177-bceb-9cb5eb2a062b",
+				"IdentityPoolName": "cognito8feb8d09_identitypool_8feb8d09",
+				"UserPoolName": "cognito8feb8d09_userpool_8feb8d09"
+			},
+			"lastPushDirHash": "Rp4M/s675oQ4dCbU69iih0WAuz8="
+		}
+	},
+	"hosting": {
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/flyorterfrontendv2-20181221114712-deployment/amplify-cfn-templates/hosting/template.json",
+				"logicalId": "hostingS3AndCloudFront"
+			},
+			"lastPushTimeStamp": "2018-12-21T19:58:52.463Z",
+			"output": {
+				"S3BucketSecureURL": "https://flyorterfrontendv2-20181221115532-hostingbucket.s3.amazonaws.com",
+				"WebsiteURL": "http://flyorterfrontendv2-20181221115532-hostingbucket.s3-website-us-west-2.amazonaws.com",
+				"Region": "us-west-2",
+				"HostingBucketName": "flyorterfrontendv2-20181221115532-hostingbucket"
+			},
+			"lastPushDirHash": "9gIpDDZp9G3N5Ydi9OvH+6hg+aI="
+		}
+	}
+}

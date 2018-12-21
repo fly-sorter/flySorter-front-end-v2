@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+
+// Add AWS Resources
+import Amplify from 'aws-amplify';
+import aws_exports from '../aws-exports';
+import { withAuthenticator } from 'aws-amplify-react';
+
 import './reset.scss';
 import './base.scss';
 import AuthRedirect from './AuthRedirect/AuthRedirect.js';
@@ -9,8 +15,9 @@ import Dashboard from './Dashboard/Dashboard.js';
 import CreatePart from './CreatePart/CreatePart.js';
 import CreateSub from './CreateSub/CreateSub.js';
 import EditPart from './EditPart/EditPart.js';
-
 import SubTableDash from './SubDashboard/SubDashboard.js';
+
+Amplify.configure(aws_exports);
 
 class App extends Component {
   render() {
@@ -33,4 +40,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withAuthenticator(App, true);
