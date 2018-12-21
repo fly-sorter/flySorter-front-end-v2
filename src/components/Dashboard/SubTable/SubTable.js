@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import * as actions from './partsTable-action.js';
+import * as actions from './subTableAction.js';
 import { connect } from 'react-redux';
 import matchSorter from 'match-sorter';
 import { Redirect } from 'react-router-dom';
 
-class PartsTable extends React.Component {
+class SubTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,91 +15,71 @@ class PartsTable extends React.Component {
   }
 
   render() {
-    const data = this.props.main.parts.map(element => {
+    const data = this.props.main.subAssembly.map(element => {
       element.delete = 'X';
       return element;
     });
+
     console.log(data, 'i am the rendered table data');
 
     const columns = [
       {
-        Header: 'Parts',
+        Header: 'Sub Assembly',
         columns: [
           {
             Header: 'ID',
-            accessor: 'part_id',
+            accessor: 'sub_id',
             filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ['part_id'] }),
+              matchSorter(rows, filter.value, { keys: ['sub_id'] }),
             filterAll: true
           },
           {
             Header: 'Description',
-            accessor: 'part_desc',
+            accessor: 'sub_desc',
             filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ['part_desc'] }),
+              matchSorter(rows, filter.value, { keys: ['sub_desc'] }),
             filterAll: true
           },
           {
-            Header: 'Subpart?',
-            accessor: 'part_sub',
+            Header: 'Version',
+            accessor: 'sub_version',
             filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ['part_sub'] }),
+              matchSorter(rows, filter.value, { keys: ['sub_version'] }),
             filterAll: true
           },
           {
-            Header: 'Source',
-            accessor: 'part_src',
+            Header: 'Total Price',
+            accessor: 'sub_total_price',
             filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ['part_src'] }),
+              matchSorter(rows, filter.value, { keys: ['sub_total_price'] }),
             filterAll: true
           },
           {
-            Header: 'Manufacture Part Number',
-            accessor: 'part_mfgnum',
+            Header: 'Quantity',
+            accessor: 'sub_qty',
             filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ['part_mfgnum'] }),
+              matchSorter(rows, filter.value, { keys: ['sub_qty'] }),
             filterAll: true
           },
           {
-            Header: 'Price',
-            accessor: 'part_price',
+            Header: 'Labor Minute',
+            accessor: 'sub_labormins',
             filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ['part_price'] }),
+              matchSorter(rows, filter.value, { keys: ['sub_labormins'] }),
             filterAll: true
           },
           {
-            Header: 'Category ID',
-            accessor: 'part_category',
+            Header: 'Parent ID',
+            accessor: 'sub_parent_id',
             filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ['part_category'] }),
+              matchSorter(rows, filter.value, { keys: ['sub_parent_id'] }),
             filterAll: true
           },
           {
-            Header: 'Location ID',
-            accessor: 'part_location',
+            Header: 'Child ID',
+            accessor: 'sub_child_id',
             filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ['part_location'] }),
-            filterAll: true
-          },
-          {
-            Header: 'Part Count',
-            accessor: 'part_count',
-            filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ['part_count'] }),
-            filterAll: true
-          },
-          {
-            Header: 'Long lead?',
-            accessor: 'part_longlead',
-            filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ['part_longlead'] }),
-            filterAll: true
-          },
-          {
-            Header: 'Notes',
-            accessor: 'part_notes',
-            filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ['part_notes'] }),
+              matchSorter(rows, filter.value, { keys: ['sub_child_id'] }),
             filterAll: true
           },
           {
@@ -110,6 +90,8 @@ class PartsTable extends React.Component {
       }
     ];
 
+    if (this.state.redirectToReferrer) return <Redirect to="/" />;
+
     return (
       <ReactTable
         getTdProps={(state, rowInfo, column, instance) => {
@@ -118,7 +100,7 @@ class PartsTable extends React.Component {
               if (rowInfo && column.Header === 'Delete') {
                 if (window.confirm('Delete Item?')) {
                   this.props.deleteItem(undefined, {
-                    part_id: rowInfo.original.part_id
+                    sub_id: rowInfo.original.sub_id
                   });
                 }
               }
@@ -145,6 +127,7 @@ class PartsTable extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch, getState) => ({
+  getSubAssembly: () => dispatch(actions.getSubAssembly()),
   deleteItem: (url, payload) => dispatch(actions.deleteItem(url, payload))
 });
 
@@ -155,4 +138,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PartsTable);
+)(SubTable);

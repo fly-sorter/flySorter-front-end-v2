@@ -5,6 +5,7 @@ import NavUI from '../NavUI/NavUI.js';
 import './dashboard.scss';
 import * as actions from './dashboardAction.js';
 import PartsTable from './PartsTable/PartsTable.js';
+import SubsTable from './SubTable/SubTable.js';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -23,6 +24,9 @@ class Dashboard extends React.Component {
     if (this.props.main.parts == false) {
       this.props.getParts();
     }
+    if (this.props.main.subAssembly == false) {
+      this.props.getSub();
+    }
   };
 
   render() {
@@ -34,6 +38,8 @@ class Dashboard extends React.Component {
         </div>
         <div className="centered">
           <PartsTable />
+          <br />
+          <SubsTable />
         </div>
       </React.Fragment>
     );
@@ -41,7 +47,8 @@ class Dashboard extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch, getState) => ({
-  getParts: () => dispatch(actions.getParts())
+  getParts: () => dispatch(actions.getParts()),
+  getSub: () => dispatch(actions.getSub())
 });
 
 const mapStateToProps = state => ({

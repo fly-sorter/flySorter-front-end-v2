@@ -8,15 +8,15 @@ const putPart = payload => {
 };
 
 export const editPart = (url, payload) => dispatch => {
+  console.log(payload, 'in edit part');
   return superagent
-    .post(
-      'https://0t4nhh9o27.execute-api.us-west-2.amazonaws.com/default/create'
+    .put(
+      'https://3asl0bs5v3.execute-api.us-west-2.amazonaws.com/default/update'
     )
     .send(payload)
     .then(data => {
-      console.log(data.body.body, 'i am the original data');
-
-      dispatch(putPart(JSON.parse(data.body.body)));
+      console.log(data.body, 'i am the original data');
+      dispatch(putPart(data.body));
     })
     .catch(error => console.error(error));
 };
