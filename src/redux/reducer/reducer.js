@@ -16,7 +16,10 @@ export default (state = initialState, action) => {
       return { ...state, ...{ parts: payload } };
 
     case 'POSTPARTS':
-      return { ...state, ...{ parts: [...state.parts, payload] } };
+      console.log(payload, `this is the display`);
+      console.log(state.parts, 'this is to be spread on');
+
+      return { ...state, ...{ parts: [payload, ...state.parts] } };
 
     case 'POSTSUB':
       return { ...state, ...{ subAssembly: [...state.subAssembly, payload] } };
@@ -31,8 +34,6 @@ export default (state = initialState, action) => {
       return { ...state, ...{ parts: retainedData } };
 
     case 'PUTPART':
-      console.log(payload, 'at put');
-      console.log(state.parts);
       let replaceData = state.parts.map(element => {
         if (element.part_id === payload.part_id) {
           return payload;

@@ -223,7 +223,7 @@ class CreateSub extends React.Component {
       return [...set];
     };
 
-    if (this.state.redirectToReferrer) return <Redirect to="/dashboard" />;
+    if (this.state.redirectToReferrer) return <Redirect to="/part-table" />;
 
     return (
       <div>

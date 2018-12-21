@@ -38,7 +38,9 @@ a:focus {
   color: #000;
 }
 a,
-a:visited,
+a:visited {
+  color: #eeeeee;
+}
 a:hover,
 a:active {
   color: inherit;
