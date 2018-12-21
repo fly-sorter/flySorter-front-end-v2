@@ -10,9 +10,7 @@ const getTable = payload => {
 
 export const getParts = (url, payload) => dispatch => {
   return superagent
-    .get(
-      'https://c9hjszviik.execute-api.us-west-2.amazonaws.com/default/emeryTestMySQL'
-    )
+    .get('https://0y076pm24b.execute-api.us-west-2.amazonaws.com/default/parts')
     .then(data => {
       console.log(JSON.parse(data.text));
       dispatch(getTable(JSON.parse(data.text)));
