@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aws-amplify": "^1.1.17",
+    "aws-amplify-react": "^2.2.4",
     "match-sorter": "^2.3.0",
     "node-sass": "^4.11.0",
     "react": "^16.6.3",
