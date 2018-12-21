@@ -1,24 +1,29 @@
 .toolbar {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  nav {
-    grid-column: 2;
-    grid-row: 1;
-    padding-right: 100px;
-    margin-top: 50px;
-  }
+  display: flex;
+  border-bottom: 2px solid black;
   img {
-    grid-column: 1;
-    grid-row: 1;
-    margin-top: 29px;
-    margin-left: 50px;
+    order: 1;
+    margin: 1% 0 0 1%;
+    height: 70px;
+  }
+  nav {
+    order: 2;
+    margin: 2% 0 0 40%;
+    height: min-content;
+  }
+  .navigation .navLink {
+    font-family: monospace;
+    margin: 1%;
+    padding: 0.5%;
   }
 }
 .centered {
+  display: table;
+  width: 96%;
+  margin: 2%;
   .ReactTable {
     font-family: arial;
     font-size: 15px;
-    margin-left: -350px;
     color: #4c4c4c;
     text-align: center;
   }

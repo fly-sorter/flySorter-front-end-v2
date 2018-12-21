@@ -137,7 +137,7 @@ class PartsTable extends React.Component {
         columns={columns}
         defaultPageSize={10}
         pageSizeOptions={[10, 20, 50, 100]}
-        style={{ height: '500px', width: '1400px' }}
+        style={{ height: '600px' }}
         className="-striped -highlight"
       />
     );
