@@ -8,6 +8,7 @@ const postSub = payload => {
 };
 
 export const subSubmit = (url, payload) => dispatch => {
+  console.log(payload);
   return superagent
     .post('https://3s53jbdtk7.execute-api.us-west-2.amazonaws.com/Dev/')
     .send(payload)

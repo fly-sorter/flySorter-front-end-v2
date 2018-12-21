@@ -19,10 +19,12 @@ class CreateSub extends React.Component {
       sub_qty: '',
       sub_minutes: '',
       part_array: [],
+      sub_array: [],
       sub_version: '',
       displayPartName: '',
       sub_total_price: '',
-      sub_labormins: ''
+      sub_labormins: '',
+      displaySubName: ''
     };
   }
 
@@ -121,7 +123,8 @@ class CreateSub extends React.Component {
         sub_total_price: this.state.sub_total_price,
         sub_qty: this.state.sub_qty,
         sub_labormins: parseInt(this.state.sub_labormins),
-        parts: this.state.part_array
+        parts: this.state.part_array,
+        other_sub: this.state.sub_array
       };
       this.props.subSubmit(undefined, postData);
       this.setState({ redirectToReferrer: true });
@@ -143,6 +146,16 @@ class CreateSub extends React.Component {
         element => element !== deleteItem
       );
       this.setState({ part_array: remainingArray });
+    }
+  };
+
+  deleteSub = event => {
+    let deleteItem = event.target.textContent;
+    if (window.confirm('Delete Item?')) {
+      let remainingArray = this.state.sub_array.filter(
+        element => element !== deleteItem
+      );
+      this.setState({ sub_array: remainingArray });
     }
   };
 
@@ -173,14 +186,38 @@ class CreateSub extends React.Component {
     this.setState({ displayPartName: displayText[0].part_desc });
   };
 
+  displaySubName = event => {
+    let display = parseInt(event.target.textContent);
+
+    console.log(this.props.main.subAssembly);
+
+    let displayText = this.props.main.subAssembly.filter(
+      element => element.sub_id === display
+    );
+    console.log(displayText);
+    this.setState({ displaySubName: displayText[0].sub_desc });
+  };
+
   render() {
     const data = this.props.main.parts;
+    const subData = this.props.main.subAssembly;
 
     const idListCreator = () => {
       let set = new Set();
       data.forEach(element => {
         if (element.part_id) {
           set.add({ part_id: element.part_id, part_desc: element.part_desc });
+        }
+      });
+      return [...set];
+    };
+
+    const subListCreator = () => {
+      let set = new Set();
+      console.log(subData, 'i am sub data');
+      subData.forEach(element => {
+        if (element.sub_id) {
+          set.add({ sub_id: element.sub_id, sub_desc: element.sub_desc });
         }
       });
       return [...set];
@@ -216,14 +253,35 @@ class CreateSub extends React.Component {
               Add{' '}
             </button>
           </li>
+
+          <li>
+            <label type="sub_array">Other Sub</label>
+            <select name="sub_array" type="select" id="sub_option">
+              <option value="">Select Other Sub</option>
+
+              {subListCreator().map((element, idx) => (
+                <option value={element.sub_id} key={idx}>
+                  {element.sub_id} {element.sub_desc}
+                </option>
+              ))}
+            </select>
+            <button
+              onClick={() => {
+                this.addToAssembly('sub_option');
+              }}
+            >
+              {' '}
+              Add{' '}
+            </button>
+          </li>
         </div>
 
         <div className="centered">
           <div className="part-field">
             <p>Parts to assemble</p>
             <p>
-              Instruction: Hover to see the Parts to assemble. Double click to
-              delete an item off the list
+              Instruction: Hover to see the Parts to assemble. Click to delete
+              an item off the list
             </p>
             <h2>{this.state.displayPartName}</h2>
             {this.state.part_array.map((element, idx) => (
@@ -232,6 +290,26 @@ class CreateSub extends React.Component {
                   key={idx}
                   onMouseEnter={this.displayName}
                   onClick={this.deletePart}
+                >
+                  {element}
+                </li>
+              </div>
+            ))}
+          </div>
+
+          <div className="part-field">
+            <p>Sub to assemble</p>
+            <p>
+              Instruction: Hover to see the Sub to assemble. Click to delete an
+              item off the list
+            </p>
+            <h2>{this.state.displaySubName}</h2>
+            {this.state.sub_array.map((element, idx) => (
+              <div name={element}>
+                <li
+                  key={idx}
+                  onMouseEnter={this.displaySubName}
+                  onClick={this.deleteSub}
                 >
                   {element}
                 </li>
