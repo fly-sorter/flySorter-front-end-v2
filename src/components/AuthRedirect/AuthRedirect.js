@@ -9,7 +9,7 @@ class AuthRedirect extends React.Component {
 
     return (
       <div>
-        {!token ? <Redirect to="/signin" /> : <Redirect to="/dashboard" />}
+        {!token ? <Redirect to="/signin" /> : <Redirect to="/part-table" />}
       </div>
     );
   }

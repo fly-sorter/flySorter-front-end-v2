@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import logo from '../../assets/logo.png';
 import NavUI from '../NavUI/NavUI.js';
-import './dashboard.scss';
-import * as actions from './dashboardAction.js';
-import PartsTable from './PartsTable/PartsTable.js';
+import * as actions from './subDashboardAction.js';
+import SubsTable from './SubTable/SubTable.js';
 
-class Dashboard extends React.Component {
+class SubDashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,8 +19,8 @@ class Dashboard extends React.Component {
   };
 
   loadTable = () => {
-    if (this.props.main.parts == false) {
-      this.props.getParts();
+    if (this.props.main.subAssembly == false) {
+      this.props.getSub();
     }
   };
 
@@ -33,7 +32,7 @@ class Dashboard extends React.Component {
           <NavUI />
         </div>
         <div className="centered">
-          <PartsTable />
+          <SubsTable />
         </div>
       </React.Fragment>
     );
@@ -41,7 +40,7 @@ class Dashboard extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch, getState) => ({
-  getParts: () => dispatch(actions.getParts())
+  getSub: () => dispatch(actions.getSub())
 });
 
 const mapStateToProps = state => ({
@@ -51,4 +50,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Dashboard);
+)(SubDashboard);

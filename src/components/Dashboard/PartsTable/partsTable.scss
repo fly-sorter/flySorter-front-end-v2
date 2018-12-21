@@ -3,12 +3,15 @@ body {
   font-size: 14px;
 }
 
-.table-alignment {
-  margin-left: -50px;
-}
-
 .ReactTable .rt-thead {
   overflow-y: scroll;
+}
+
+.ReactTable .rt-th {
+  background: #808080;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .rt-th:focus {

@@ -10,6 +10,7 @@ import CreatePart from './CreatePart/CreatePart.js';
 import CreateSub from './CreateSub/CreateSub.js';
 import EditPart from './EditPart/EditPart.js';
 import CreateRedirect from './CreateRedirect/CreateRedirect.js';
+import SubTableDash from './SubDashboard/SubDashboard.js';
 
 class App extends Component {
   render() {
@@ -20,7 +21,8 @@ class App extends Component {
             <Route path="*" component={AuthRedirect} />
             <Route path="/signin" component={Signin} />
             <Route path="/signup" component={Signup} />
-            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/part-table" component={Dashboard} />
+            <Route path="/sub-table" component={SubTableDash} />
             <Route path="/create" component={CreateRedirect} />
             <Route path="/createpart" component={CreatePart} />
             <Route path="/editpart" component={EditPart} />

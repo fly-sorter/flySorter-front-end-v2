@@ -278,10 +278,10 @@ class CreateSub extends React.Component {
 
         <div className="centered">
           <div className="part-field">
-            <p>Parts to assemble</p>
+            <p>Parts to include in this assembly:</p>
             <p>
-              Instruction: Hover to see the Parts to assemble. Click to delete
-              an item off the list
+              Instruction: Hover over the id to view the name of the part. Click
+              an id to delete the item from the list.
             </p>
             <h2>{this.state.displayPartName}</h2>
             {this.state.part_array.map((element, idx) => (
@@ -298,10 +298,10 @@ class CreateSub extends React.Component {
           </div>
 
           <div className="part-field">
-            <p>Sub to assemble</p>
+            <p>Sub assembly to include in this assembly:</p>
             <p>
-              Instruction: Hover to see the Sub to assemble. Click to delete an
-              item off the list
+              Instruction: Hover over the id to view the name of the sub
+              assembly. Click an id to delete the item from the list.
             </p>
             <h2>{this.state.displaySubName}</h2>
             {this.state.sub_array.map((element, idx) => (

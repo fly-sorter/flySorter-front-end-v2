@@ -1,19 +1,45 @@
 .navigation {
-  margin-top: 20px;
-  .navLink {
-    padding: 10px;
+  display: flex;
+  margin-top: 9%;
+  a {
     font-size: 1.25em;
     border: 2px solid #4c4c4c;
     border-radius: 3px;
-    margin: 10px;
-    color: #4c4c4c;
-    .navLink:visited {
-      color: #4c4c4c;
-    }
+    margin: 1%;
+    background: #4c4c4c;
+    color: #fff;
+    width: 7em;
   }
 }
-
-.navLink:hover {
-  background-color: #4c4c4c;
+.redirect {
+  display: flex;
+  margin-top: 9%;
+  a {
+    font-size: 1.25em;
+    border: 2px solid #4c4c4c;
+    border-radius: 3px;
+    margin: 1%;
+    background: #4c4c4c;
+    color: #fff;
+    width: 10em;
+    height: 100%;
+  }
+}
+a:hover {
+  background-color: #808080;
   color: #eeeeee;
+}
+a:active {
+  background: #fff;
+  color: #000;
+}
+a:focus {
+  background: #fff;
+  color: #000;
+}
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
 }
