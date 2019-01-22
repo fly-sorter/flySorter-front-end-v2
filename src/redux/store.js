@@ -8,7 +8,7 @@ import reporter from './middleware/reporter.js';
 import thunk from 'redux-thunk';
 
 let reducers = combineReducers({
-  main: mainReducer
+  main: mainReducer,
 });
 
 const store = () =>

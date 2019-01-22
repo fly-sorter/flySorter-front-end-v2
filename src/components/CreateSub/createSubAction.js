@@ -3,7 +3,7 @@ import superagent from 'superagent';
 const postSub = payload => {
   return {
     type: 'POSTSUB',
-    payload: payload
+    payload: payload,
   };
 };
 

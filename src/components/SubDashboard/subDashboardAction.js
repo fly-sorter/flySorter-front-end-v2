@@ -4,7 +4,7 @@ const getSubTable = payload => {
   console.log(' I am hit in theory');
   return {
     type: 'GETSUBASSEMBLY',
-    payload: payload
+    payload: payload,
   };
 };
 

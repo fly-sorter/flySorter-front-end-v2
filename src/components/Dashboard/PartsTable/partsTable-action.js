@@ -4,7 +4,7 @@ const deleteParts = payload => {
   console.log(' I am hit in theory');
   return {
     type: 'DELETEPART',
-    payload: payload
+    payload: payload,
   };
 };
 

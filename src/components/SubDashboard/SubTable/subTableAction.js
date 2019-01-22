@@ -3,7 +3,7 @@ const createSub = payload => {
   console.log(' I am hit in theory');
   return {
     type: 'GETPARTS',
-    payload: payload
+    payload: payload,
   };
 };
 
@@ -19,7 +19,7 @@ const deleteParts = payload => {
   console.log(' I am hit in theory');
   return {
     type: 'DELETESUB',
-    payload: payload
+    payload: payload,
   };
 };
 
