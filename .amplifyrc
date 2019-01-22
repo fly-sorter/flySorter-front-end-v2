@@ -1,0 +1,14 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "flyorterfrontendv2-20181221114712-authRole",
+            "UnauthRoleArn": "arn:aws:iam::359646546957:role/flyorterfrontendv2-20181221114712-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::359646546957:role/flyorterfrontendv2-20181221114712-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "flyorterfrontendv2-20181221114712-deployment",
+            "UnauthRoleName": "flyorterfrontendv2-20181221114712-unauthRole",
+            "StackName": "flyorterfrontendv2-20181221114712",
+            "StackId": "arn:aws:cloudformation:us-west-2:359646546957:stack/flyorterfrontendv2-20181221114712/3655c650-0559-11e9-a367-0685e3189192"
+        }
+    }
+}

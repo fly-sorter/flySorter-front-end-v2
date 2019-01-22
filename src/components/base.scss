@@ -1,0 +1,35 @@
+@import 'variables';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+  background-color: $color-accent;
+  color: $color-secondary;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 3%;
+}
+
+html {
+  overflow-y: scroll;
+}
+img {
+  margin: 50px auto;
+  width: 250px;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: #b9b9b9;
+  margin-left: 10px;
+}
+a:visited {
+  color: $color-secondary;
+}

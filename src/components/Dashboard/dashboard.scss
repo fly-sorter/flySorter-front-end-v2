@@ -1,0 +1,30 @@
+.toolbar {
+  display: flex;
+  border-bottom: 2px solid black;
+  img {
+    order: 1;
+    margin: 1% 0 0 1%;
+    height: 70px;
+  }
+  nav {
+    order: 2;
+    margin: 2% 0 0 40%;
+    height: min-content;
+  }
+  .navigation .navLink {
+    font-family: monospace;
+    margin: 1%;
+    padding: 0.5%;
+  }
+}
+.centered {
+  display: table;
+  width: 96%;
+  margin: 2%;
+  .ReactTable {
+    font-family: arial;
+    font-size: 15px;
+    color: #4c4c4c;
+    text-align: center;
+  }
+}
