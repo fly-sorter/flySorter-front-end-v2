@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import * as actions from './subTableAction.js';
@@ -10,7 +10,7 @@ class SubTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirectToReferrer: false
+      redirectToReferrer: false,
     };
   }
 
@@ -31,63 +31,63 @@ class SubTable extends React.Component {
             accessor: 'sub_id',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['sub_id'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Description',
             accessor: 'sub_desc',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['sub_desc'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Version',
             accessor: 'sub_version',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['sub_version'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Total Price',
             accessor: 'sub_total_price',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['sub_total_price'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Quantity',
             accessor: 'sub_qty',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['sub_qty'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Labor Minute',
             accessor: 'sub_labormins',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['sub_labormins'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Parent ID',
             accessor: 'sub_parent_id',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['sub_parent_id'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Child ID',
             accessor: 'sub_child_id',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['sub_child_id'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Delete',
-            accessor: 'delete'
-          }
-        ]
-      }
+            accessor: 'delete',
+          },
+        ],
+      },
     ];
 
     if (this.state.redirectToReferrer) return <Redirect to="/" />;
@@ -100,7 +100,7 @@ class SubTable extends React.Component {
               if (rowInfo && column.Header === 'Delete') {
                 if (window.confirm('Delete Item?')) {
                   this.props.deleteItem(undefined, {
-                    sub_id: rowInfo.original.sub_id
+                    sub_id: rowInfo.original.sub_id,
                   });
                 }
               }
@@ -108,7 +108,7 @@ class SubTable extends React.Component {
               if (handleOriginal) {
                 handleOriginal();
               }
-            }
+            },
           };
         }}
         data={data}
@@ -128,11 +128,11 @@ class SubTable extends React.Component {
 
 const mapDispatchToProps = (dispatch, getState) => ({
   getSubAssembly: () => dispatch(actions.getSubAssembly()),
-  deleteItem: (url, payload) => dispatch(actions.deleteItem(url, payload))
+  deleteItem: (url, payload) => dispatch(actions.deleteItem(url, payload)),
 });
 
 const mapStateToProps = state => ({
-  main: state.main
+  main: state.main,
 });
 
 export default connect(

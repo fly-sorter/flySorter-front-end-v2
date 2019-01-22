@@ -3,7 +3,7 @@ import superagent from 'superagent';
 const putPart = payload => {
   return {
     type: 'PUTPART',
-    payload: payload
+    payload: payload,
   };
 };
 

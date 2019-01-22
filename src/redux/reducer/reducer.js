@@ -5,7 +5,7 @@ const initialState = {
   subAssembly: [],
   users: [],
   subhistory: [],
-  signup: {}
+  signup: {},
 };
 
 export default (state = initialState, action) => {
@@ -27,13 +27,14 @@ export default (state = initialState, action) => {
     case 'GETSUBASSEMBLY':
       return { ...state, ...{ subAssembly: payload } };
 
-    case 'DELETEPART':
+    case 'DELETEPART': {
       let retainedData = state.parts.filter(
         element => element.part_id !== payload
       );
       return { ...state, ...{ parts: retainedData } };
+    }
 
-    case 'PUTPART':
+    case 'PUTPART': {
       let replaceData = state.parts.map(element => {
         if (element.part_id === payload.part_id) {
           return payload;
@@ -42,6 +43,7 @@ export default (state = initialState, action) => {
       });
       console.log(replaceData);
       return { ...state, ...{ parts: replaceData } };
+    }
 
     case 'GETUSERLIST':
       return { ...state, ...{ users: payload } };
@@ -51,11 +53,12 @@ export default (state = initialState, action) => {
       return { ...state, ...{ signup: payload } };
     }
 
-    case 'DELETESUB':
+    case 'DELETESUB': {
       let retainedDataSub = state.subAssembly.filter(
         element => element.sub_id !== payload
       );
       return { ...state, ...{ subAssembly: retainedDataSub } };
+    }
 
     default:
       return state;

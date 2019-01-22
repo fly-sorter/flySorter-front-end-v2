@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import * as actions from './partsTable-action.js';
 import { connect } from 'react-redux';
 import matchSorter from 'match-sorter';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 class PartsTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirectToReferrer: false
+      redirectToReferrer: false,
     };
   }
 
@@ -30,84 +30,84 @@ class PartsTable extends React.Component {
             accessor: 'part_id',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['part_id'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Description',
             accessor: 'part_desc',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['part_desc'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Subpart?',
             accessor: 'part_sub',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['part_sub'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Source',
             accessor: 'part_src',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['part_src'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Manufacture Part Number',
             accessor: 'part_mfgnum',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['part_mfgnum'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Price',
             accessor: 'part_price',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['part_price'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Category ID',
             accessor: 'part_category',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['part_category'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Location ID',
             accessor: 'part_location',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['part_location'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Part Count',
             accessor: 'part_count',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['part_count'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Long lead?',
             accessor: 'part_longlead',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['part_longlead'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Notes',
             accessor: 'part_notes',
             filterMethod: (filter, rows) =>
               matchSorter(rows, filter.value, { keys: ['part_notes'] }),
-            filterAll: true
+            filterAll: true,
           },
           {
             Header: 'Delete',
-            accessor: 'delete'
-          }
-        ]
-      }
+            accessor: 'delete',
+          },
+        ],
+      },
     ];
 
     return (
@@ -118,7 +118,7 @@ class PartsTable extends React.Component {
               if (rowInfo && column.Header === 'Delete') {
                 if (window.confirm('Delete Item?')) {
                   this.props.deleteItem(undefined, {
-                    part_id: rowInfo.original.part_id
+                    part_id: rowInfo.original.part_id,
                   });
                 }
               }
@@ -126,7 +126,7 @@ class PartsTable extends React.Component {
               if (handleOriginal) {
                 handleOriginal();
               }
-            }
+            },
           };
         }}
         data={data}
@@ -145,11 +145,11 @@ class PartsTable extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch, getState) => ({
-  deleteItem: (url, payload) => dispatch(actions.deleteItem(url, payload))
+  deleteItem: (url, payload) => dispatch(actions.deleteItem(url, payload)),
 });
 
 const mapStateToProps = state => ({
-  main: state.main
+  main: state.main,
 });
 
 export default connect(
