@@ -6,7 +6,7 @@
     "aws-amplify": "^1.1.17",
     "aws-amplify-react": "^2.2.4",
     "match-sorter": "^2.3.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "react": "^16.6.3",
     "react-cookies": "^0.1.0",
     "react-dom": "^16.6.3",
